@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saferich.log.flow.mapper.FlowlogdataMapper" >
+  <resultMap id="BaseResultMap" type="com.saferich.log.flow.model.Flowlogdata" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="serialId" property="serialid" jdbcType="VARCHAR" />
+    <result column="client" property="client" jdbcType="VARCHAR" />
+    <result column="operationIP" property="operationip" jdbcType="VARCHAR" />
+    <result column="dateTime" property="datetime" jdbcType="VARCHAR" />
+    <result column="businessType" property="businesstype" jdbcType="VARCHAR" />
+    <result column="requestor" property="requestor" jdbcType="VARCHAR" />
+    <result column="requestorId" property="requestorid" jdbcType="VARCHAR" />
+    <result column="systemType" property="systemtype" jdbcType="VARCHAR" />
+    <result column="flowBusinessId" property="flowbusinessid" jdbcType="VARCHAR" />
+    <result column="flowBusinessType" property="flowbusinesstype" jdbcType="VARCHAR" />
+    <result column="flowChangeReason" property="flowchangereason" jdbcType="VARCHAR" />
+    <result column="newFlowNode" property="newflownode" jdbcType="VARCHAR" />
+    <result column="oldFlowNode" property="oldflownode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, serialId, client, operationIP, dateTime, businessType, requestor, requestorId, 
+    systemType, flowBusinessId, flowBusinessType, flowChangeReason, newFlowNode, oldFlowNode
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.saferich.log.flow.model.FlowlogdataExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from flowlogdata
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null" >
+      limit #{limit.start},#{limit.maxRows}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from flowlogdata
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from flowlogdata
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.saferich.log.flow.model.FlowlogdataExample" >
+    delete from flowlogdata
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.saferich.log.flow.model.Flowlogdata" >
+    insert into flowlogdata (id, serialId, client, 
+      operationIP, dateTime, businessType, 
+      requestor, requestorId, systemType, 
+      flowBusinessId, flowBusinessType, flowChangeReason, 
+      newFlowNode, oldFlowNode)
+    values (#{id,jdbcType=INTEGER}, #{serialid,jdbcType=VARCHAR}, #{client,jdbcType=VARCHAR}, 
+      #{operationip,jdbcType=VARCHAR}, #{datetime,jdbcType=VARCHAR}, #{businesstype,jdbcType=VARCHAR}, 
+      #{requestor,jdbcType=VARCHAR}, #{requestorid,jdbcType=VARCHAR}, #{systemtype,jdbcType=VARCHAR}, 
+      #{flowbusinessid,jdbcType=VARCHAR}, #{flowbusinesstype,jdbcType=VARCHAR}, #{flowchangereason,jdbcType=VARCHAR}, 
+      #{newflownode,jdbcType=VARCHAR}, #{oldflownode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.saferich.log.flow.model.Flowlogdata" >
+    insert into flowlogdata
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="serialid != null" >
+        serialId,
+      </if>
+      <if test="client != null" >
+        client,
+      </if>
+      <if test="operationip != null" >
+        operationIP,
+      </if>
+      <if test="datetime != null" >
+        dateTime,
+      </if>
+      <if test="businesstype != null" >
+        businessType,
+      </if>
+      <if test="requestor != null" >
+        requestor,
+      </if>
+      <if test="requestorid != null" >
+        requestorId,
+      </if>
+      <if test="systemtype != null" >
+        systemType,
+      </if>
+      <if test="flowbusinessid != null" >
+        flowBusinessId,
+      </if>
+      <if test="flowbusinesstype != null" >
+        flowBusinessType,
+      </if>
+      <if test="flowchangereason != null" >
+        flowChangeReason,
+      </if>
+      <if test="newflownode != null" >
+        newFlowNode,
+      </if>
+      <if test="oldflownode != null" >
+        oldFlowNode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="serialid != null" >
+        #{serialid,jdbcType=VARCHAR},
+      </if>
+      <if test="client != null" >
+        #{client,jdbcType=VARCHAR},
+      </if>
+      <if test="operationip != null" >
+        #{operationip,jdbcType=VARCHAR},
+      </if>
+      <if test="datetime != null" >
+        #{datetime,jdbcType=VARCHAR},
+      </if>
+      <if test="businesstype != null" >
+        #{businesstype,jdbcType=VARCHAR},
+      </if>
+      <if test="requestor != null" >
+        #{requestor,jdbcType=VARCHAR},
+      </if>
+      <if test="requestorid != null" >
+        #{requestorid,jdbcType=VARCHAR},
+      </if>
+      <if test="systemtype != null" >
+        #{systemtype,jdbcType=VARCHAR},
+      </if>
+      <if test="flowbusinessid != null" >
+        #{flowbusinessid,jdbcType=VARCHAR},
+      </if>
+      <if test="flowbusinesstype != null" >
+        #{flowbusinesstype,jdbcType=VARCHAR},
+      </if>
+      <if test="flowchangereason != null" >
+        #{flowchangereason,jdbcType=VARCHAR},
+      </if>
+      <if test="newflownode != null" >
+        #{newflownode,jdbcType=VARCHAR},
+      </if>
+      <if test="oldflownode != null" >
+        #{oldflownode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.saferich.log.flow.model.FlowlogdataExample" resultType="java.lang.Integer" >
+    select count(*) from flowlogdata
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update flowlogdata
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.serialid != null" >
+        serialId = #{record.serialid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.client != null" >
+        client = #{record.client,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operationip != null" >
+        operationIP = #{record.operationip,jdbcType=VARCHAR},
+      </if>
+      <if test="record.datetime != null" >
+        dateTime = #{record.datetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businesstype != null" >
+        businessType = #{record.businesstype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requestor != null" >
+        requestor = #{record.requestor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requestorid != null" >
+        requestorId = #{record.requestorid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.systemtype != null" >
+        systemType = #{record.systemtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.flowbusinessid != null" >
+        flowBusinessId = #{record.flowbusinessid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.flowbusinesstype != null" >
+        flowBusinessType = #{record.flowbusinesstype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.flowchangereason != null" >
+        flowChangeReason = #{record.flowchangereason,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newflownode != null" >
+        newFlowNode = #{record.newflownode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oldflownode != null" >
+        oldFlowNode = #{record.oldflownode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update flowlogdata
+    set id = #{record.id,jdbcType=INTEGER},
+      serialId = #{record.serialid,jdbcType=VARCHAR},
+      client = #{record.client,jdbcType=VARCHAR},
+      operationIP = #{record.operationip,jdbcType=VARCHAR},
+      dateTime = #{record.datetime,jdbcType=VARCHAR},
+      businessType = #{record.businesstype,jdbcType=VARCHAR},
+      requestor = #{record.requestor,jdbcType=VARCHAR},
+      requestorId = #{record.requestorid,jdbcType=VARCHAR},
+      systemType = #{record.systemtype,jdbcType=VARCHAR},
+      flowBusinessId = #{record.flowbusinessid,jdbcType=VARCHAR},
+      flowBusinessType = #{record.flowbusinesstype,jdbcType=VARCHAR},
+      flowChangeReason = #{record.flowchangereason,jdbcType=VARCHAR},
+      newFlowNode = #{record.newflownode,jdbcType=VARCHAR},
+      oldFlowNode = #{record.oldflownode,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.saferich.log.flow.model.Flowlogdata" >
+    update flowlogdata
+    <set >
+      <if test="serialid != null" >
+        serialId = #{serialid,jdbcType=VARCHAR},
+      </if>
+      <if test="client != null" >
+        client = #{client,jdbcType=VARCHAR},
+      </if>
+      <if test="operationip != null" >
+        operationIP = #{operationip,jdbcType=VARCHAR},
+      </if>
+      <if test="datetime != null" >
+        dateTime = #{datetime,jdbcType=VARCHAR},
+      </if>
+      <if test="businesstype != null" >
+        businessType = #{businesstype,jdbcType=VARCHAR},
+      </if>
+      <if test="requestor != null" >
+        requestor = #{requestor,jdbcType=VARCHAR},
+      </if>
+      <if test="requestorid != null" >
+        requestorId = #{requestorid,jdbcType=VARCHAR},
+      </if>
+      <if test="systemtype != null" >
+        systemType = #{systemtype,jdbcType=VARCHAR},
+      </if>
+      <if test="flowbusinessid != null" >
+        flowBusinessId = #{flowbusinessid,jdbcType=VARCHAR},
+      </if>
+      <if test="flowbusinesstype != null" >
+        flowBusinessType = #{flowbusinesstype,jdbcType=VARCHAR},
+      </if>
+      <if test="flowchangereason != null" >
+        flowChangeReason = #{flowchangereason,jdbcType=VARCHAR},
+      </if>
+      <if test="newflownode != null" >
+        newFlowNode = #{newflownode,jdbcType=VARCHAR},
+      </if>
+      <if test="oldflownode != null" >
+        oldFlowNode = #{oldflownode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.saferich.log.flow.model.Flowlogdata" >
+    update flowlogdata
+    set serialId = #{serialid,jdbcType=VARCHAR},
+      client = #{client,jdbcType=VARCHAR},
+      operationIP = #{operationip,jdbcType=VARCHAR},
+      dateTime = #{datetime,jdbcType=VARCHAR},
+      businessType = #{businesstype,jdbcType=VARCHAR},
+      requestor = #{requestor,jdbcType=VARCHAR},
+      requestorId = #{requestorid,jdbcType=VARCHAR},
+      systemType = #{systemtype,jdbcType=VARCHAR},
+      flowBusinessId = #{flowbusinessid,jdbcType=VARCHAR},
+      flowBusinessType = #{flowbusinesstype,jdbcType=VARCHAR},
+      flowChangeReason = #{flowchangereason,jdbcType=VARCHAR},
+      newFlowNode = #{newflownode,jdbcType=VARCHAR},
+      oldFlowNode = #{oldflownode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
