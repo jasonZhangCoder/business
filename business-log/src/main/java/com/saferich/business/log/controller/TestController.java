@@ -16,7 +16,7 @@ public class TestController {
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
 	@ResponseBody
     public String account(HttpServletRequest request, HttpServletResponse response, Model model) {
-        
+        System.out.println("aaaa");
         return "true";
     }
 }
