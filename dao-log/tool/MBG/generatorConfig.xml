@@ -28,23 +28,23 @@
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
 
-		<javaModelGenerator targetPackage="com.saferich.log.flow.model"
+		<javaModelGenerator targetPackage="com.saferich.log.user.model"
 			targetProject="src/main/java">
 			<property name="enableSubPackages" value="false" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 
-		<sqlMapGenerator targetPackage="mybatis.sqlmap.flow"
+		<sqlMapGenerator targetPackage="mybatis.sqlmap.user"
 			targetProject="src/main/resources">
 			<property name="enableSubPackages" value="false" />
 		</sqlMapGenerator>
 
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.saferich.log.flow.mapper" targetProject="src/main/java">
+			targetPackage="com.saferich.log.user.mapper" targetProject="src/main/java">
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 
-		<table tableName="flowlogdata" domainObjectName="Flowlogdata">
+		<table tableName="user" domainObjectName="User">
 			<property name="useActualColumnNames" value="false" />
 		</table>
 

@@ -30,7 +30,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations">
 			<list>
-				<value>classpath:mybatis/sqlmap/flow/*.xml</value>
+				<value>classpath:mybatis/sqlmap/user/*.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -42,7 +42,7 @@
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
-		<property name="basePackage" value="com.saferich.log.dao.flow.mapper.FlowlogdataMapper" />
+		<property name="basePackage" value="com.saferich.log.user.mapper" />
 	</bean>
 
 </beans>
