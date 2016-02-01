@@ -9,14 +9,16 @@
 	<context id="ho" targetRuntime="MyBatis3" defaultModelType="flat">
 
 		<property name="javaFileEncoding" value="UTF-8" />
-
+		
+		
 		<plugin type="com.saferich.plugin.mybatis.ModelExampleLimitPlugin" />
 		<plugin type="com.saferich.plugin.mybatis.ModelJavaDocPlugin" />
 		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
 
 		<commentGenerator>
 			<property name="suppressDate" value="true" />
-			<property name="suppressAllComments" value="true" />
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->  
+			<property name="suppressAllComments" value="false" />
 		</commentGenerator>
 
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
@@ -28,7 +30,7 @@
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
 
-		<javaModelGenerator targetPackage="com.saferich.log.user.model"
+		<javaModelGenerator targetPackage="com.saferich.dao.log.user.model"
 			targetProject="src/main/java">
 			<property name="enableSubPackages" value="false" />
 			<property name="trimStrings" value="true" />
@@ -40,7 +42,7 @@
 		</sqlMapGenerator>
 
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.saferich.log.user.mapper" targetProject="src/main/java">
+			targetPackage="com.saferich.dao.log.user.mapper" targetProject="src/main/java">
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 
