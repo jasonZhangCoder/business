@@ -12,11 +12,9 @@
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<!-- 暴露远程服务 -->
-	<bean name="/logService"
-		class="org.springframework.remoting.caucho.HessianServiceExporter">
-		<property name="service" ref="logRemoteService" />
-		<property name="serviceInterface"
-			value="com.saferich.api.log.ILogRemoteService" />
+	<bean name="/logBusiness" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="logRemoteBusiness" />
+		<property name="serviceInterface" value="com.saferich.api.log.ILogRemoteBusiness" />
 	</bean>
 
 </beans>

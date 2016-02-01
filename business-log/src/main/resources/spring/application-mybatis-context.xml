@@ -42,7 +42,7 @@
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
-		<property name="basePackage" value="com.saferich.log.user.mapper" />
+		<property name="basePackage" value="com.saferich.dao.log.user.mapper" />
 	</bean>
 
 </beans>
