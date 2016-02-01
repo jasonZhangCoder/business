@@ -13,8 +13,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd"
         default-lazy-init="true">
 	<mvc:annotation-driven/>
-	<context:annotation-config />
-    <context:component-scan base-package="com.saferich.log"/>
+    <context:component-scan base-package="com.saferich.business"/>
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 	    <property name="locations" value="classpath:properties/*.properties" />
 		<property name="fileEncoding" value="UTF-8" />
